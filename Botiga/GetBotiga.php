@@ -11,15 +11,15 @@
     <h1>GetBotiga</h1>
         <form action="PostBotiga.php" method="post">
             <div>
-                <label for="Nombre">Nombre</label>
+                <label for="Nombre">Nombre:</label>
                 <input type="text" id="Nombre" name="Nombre">
             </div>
             <div class="form-group">
-                <label for="Descripcion">Descripcion</label>
+                <label for="Descripcion">Descripcion:</label>
                 <textarea id="Descripcion" rows="3" name="Descripcion"></textarea>
             </div>
             <div>
-                <label for="Precio">Precio</label>
+                <label for="Precio">Precio:</label>
                 <input type="number" id="Precio" name="Precio">
             </div>
             <div>
