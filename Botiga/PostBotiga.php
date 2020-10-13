@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PostBotiga</title>
-    <link rel="stylesheet" href="./CSS/Botiga.css">
+    <link rel="stylesheet" href="CSS/Botiga.css">
 </head>
 <body>
     <?php
@@ -27,8 +27,8 @@
         }
         fclose($productos);
     ?>
-    <table class="table table-striped">
-        <thead class="thead-dark">
+    <table id="tabla">
+        <thead>
             <th>Nombre</th>
             <th>Descripcion</th>
             <th>Precio</th>
@@ -49,14 +49,8 @@
                 echo "</tr>";
             }
             ?>
-            <tr>
-                <td>
-                    <a href=GetBotiga.php>Añadir</a>
-                </td>
-                <td></td>
-                <td></td>
-            </tr>
         </tbody>
     </table>
+	<a href=GetBotiga.php>Añadir</a>
 </body>
 </html>

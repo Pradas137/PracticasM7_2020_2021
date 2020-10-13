@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GetBotiga</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/Botiga.css">
 </head>
 <body>
     <div>
@@ -20,15 +20,10 @@
             </div>
             <div>
                 <label for="Precio">Precio</label>
-                <div>
-                    <div>
-                        <div>€</div>
-                    </div>
-                    <input type="number" id="Precio" name="Precio">
-                </div>
+                <input type="number" id="Precio" name="Precio">
             </div>
             <div>
-            <input type="submit" class="btn btn-primary">
+            <input type="submit">
             </div>
         </form>
     </div>
