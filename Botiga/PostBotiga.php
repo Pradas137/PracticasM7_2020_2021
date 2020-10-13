@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="CSS/Botiga.css">
 </head>
 <body>
-    <h1>GetBotiga</h1>
+    <h1>PostBotiga</h1>
     <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $productos = fopen("productos.cfg", "a");
@@ -19,14 +19,14 @@
         }
     ?>
     <?php
-        $productos = fopen("productos.cfg", "r");
+        $productosGet = fopen("productos.cfg", "r");
         $listaProductos = [];
-        while(!feof($productos)) {
-            $Conjunto = fgets($productos);
+        while(!feof($productosGet)) {
+            $Conjunto = fgets($productosGet);
             $producto = explode(';', $Conjunto);
             array_push($listaProductos, $producto);
         }
-        fclose($productos);
+        fclose($productosGet);
     ?>
     <table id="tabla">
         <thead>
