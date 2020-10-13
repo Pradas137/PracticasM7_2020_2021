@@ -1,16 +1,62 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>PostBotiga</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostBotiga</title>
+    <link rel="stylesheet" href="./CSS/Botiga.css">
 </head>
 <body>
-?>
-	<form action="GetBotiga.php" method="POST" name="formulario">
-		<h2>Formulario Productos</h2>
-		Nombre: <input type="text" name="nombre" /><br />
-		Descripcion<input type="text" name="descripcion" /><br />
-		Preio<input type="number" name="precio" /><br />
-		<input type="submit" name="enviar" value="Enviar" />
-	</form>
+    <?php
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $productos = fopen("productos.cfg", "a");
+            $nuevoProducto = $_POST['Nombre'].";".$_POST['Descripcion'].";".$_POST['Precio'];;
+            fwrite($productos, "\n");
+            fwrite($productos, $nuevoProducto);
+            fclose($productos);
+        }
+    ?>
+    <?php
+        $productos = fopen("productos.cfg", "r");
+        $listaProductos = [];
+        while(!feof($productos)) {
+            $Conjunto = fgets($productos);
+            $producto = explode(';', $Conjunto);
+            array_push($listaProductos, $producto);
+        }
+        fclose($productos);
+    ?>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($listaProductos as $key => $producto) {
+                echo "<tr>";
+                echo "<td>";
+                echo $producto[0];
+                echo "</td>";
+                echo "<td>";
+                echo $producto[1];
+                echo "</td>";
+                echo "<td>";
+                echo number_format((float)$producto[2], 2, ",", " ")." €";
+                echo "</td>";
+                echo "</tr>";
+            }
+            ?>
+            <tr>
+                <td>
+                    <a href=GetBotiga.php>Añadir</a>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
