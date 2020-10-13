@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="CSS/Botiga.css">
 </head>
 <body>
+    <h1>GetBotiga</h1>
     <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $productos = fopen("productos.cfg", "a");
@@ -51,6 +52,8 @@
             ?>
         </tbody>
     </table>
-	<a href=GetBotiga.php>Añadir</a>
+    <div id="Contenedor">
+        <a href=GetBotiga.php id="enlace">Añadir</a>
+    </div>
 </body>
 </html>

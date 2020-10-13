@@ -8,7 +8,7 @@
 </head>
 <body>
     <div>
-    <h1>GetBotiga</h1>
+    <h1 id="Titulo">GetBotiga</h1>
         <form action="PostBotiga.php" method="post">
             <div>
                 <label for="Nombre">Nombre:</label>
@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label for="Descripcion">Descripcion:</label>
-                <textarea id="Descripcion" rows="3" name="Descripcion"></textarea>
+                <textarea id="Descripcion" name="Descripcion"></textarea>
             </div>
             <div>
                 <label for="Precio">Precio:</label>
