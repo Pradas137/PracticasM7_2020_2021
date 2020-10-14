@@ -10,15 +10,6 @@
 <body>
     <h1>Mostrar Productos</h1>
     <?php
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $productos = fopen("productes.txt", "a");
-            $nuevoProducto = $_POST['Nombre'].";".$_POST['Descripcion'].";".$_POST['Precio'];;
-            fwrite($productos, "\n");
-            fwrite($productos, $nuevoProducto);
-            fclose($productos);
-        }
-    ?>
-    <?php
         $productosGet = fopen("productes.txt", "r");
         $listaProductos = [];
         while(!feof($productosGet)) {
@@ -49,7 +40,7 @@
             ?>
     </table>
     <div id="Contenedor">
-        <a href=nou_producte.php id="enlace">Añadir</a>
+        <a href="nou_producte.html" id="enlace">Añadir</a>
     </div>
 </body>
 </html>
