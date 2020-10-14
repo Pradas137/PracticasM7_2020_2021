@@ -10,8 +10,8 @@
 <body>
     <h1>Mostrar Productos</h1>
     <?php
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $productos = fopen("productos.cfg", "a");
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $productos = fopen("productes.txt", "a");
             $nuevoProducto = $_POST['Nombre'].";".$_POST['Descripcion'].";".$_POST['Precio'];;
             fwrite($productos, "\n");
             fwrite($productos, $nuevoProducto);
@@ -19,7 +19,7 @@
         }
     ?>
     <?php
-        $productosGet = fopen("productos.cfg", "r");
+        $productosGet = fopen("productes.txt", "r");
         $listaProductos = [];
         while(!feof($productosGet)) {
             $Conjunto = fgets($productosGet);
@@ -29,12 +29,9 @@
         fclose($productosGet);
     ?>
     <table id="tabla">
-        <thead>
             <th>Nombre</th>
             <th>Descripcion</th>
             <th>Precio</th>
-        </thead>
-        <tbody>
             <?php
             foreach ($listaProductos as $key => $producto) {
                 echo "<tr>";
@@ -50,10 +47,9 @@
                 echo "</tr>";
             }
             ?>
-        </tbody>
     </table>
     <div id="Contenedor">
-        <a href=GetBotiga.php id="enlace">Añadir</a>
+        <a href=nou_producte.php id="enlace">Añadir</a>
     </div>
 </body>
 </html>
