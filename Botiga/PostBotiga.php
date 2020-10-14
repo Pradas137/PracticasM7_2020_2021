@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="CSS/Botiga.css">
 </head>
 <body>
-    <h1>PostBotiga</h1>
+    <h1>Mostrar Productos</h1>
     <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $productos = fopen("productos.cfg", "a");

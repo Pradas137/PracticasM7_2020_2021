@@ -8,7 +8,7 @@
 </head>
 <body>
     <div>
-    <h1 id="Titulo">GetBotiga</h1>
+    <h1 id="Titulo">Introducir Productos</h1>
         <form action="PostBotiga.php" method="post">
             <div>
                 <label for="Nombre">Nombre:</label>
