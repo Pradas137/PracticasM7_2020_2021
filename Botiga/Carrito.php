@@ -1,39 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Select Botiga</title>
+	<link rel="stylesheet" href="CSS/Botiga.css">
+
 </head>
 <body>
+<form action="" method="post" class="text-center form-inline">
 	<?php
-session_start();
-?>
-
-<?php
-if (isset($_POST['submit']))
-{
-
-  if($_SESSION['item']==$_POST['h1'])
-{
-  $_SESSION['qty'] = $_SESSION['qty'] + 1;
-}
-else
-{
-  $_SESSION['item'] = $_POST['h1'];
-  $_SESSION['price']= $_POST['h2'];
-}
-
- $_SESSION['itemname'][$_SESSION['item']] = $_SESSION['item'];
- $_SESSION['itemqty'][$_SESSION['item']] = $_SESSION['qty'];
- $_SESSION['itemprice'][$_SESSION['item']] = $_SESSION['price'];
-
-}
-
-?>
-
-
-<form action="elwood.php" method="post"><input type="hidden"
-name="h1" value="Elwood Benchmark tee"/><input type="hidden" name="h2" value="59.99"/><input
-type="submit" name="submit" value="Add to cart"/></form>
-
+	$fichero = file('productes.txt');
+	$options = '';
+	foreach ($datos as $fichero) {
+		$options .= '<option value="'.$fichero.'">'.$fichero.'</option>';
+	}
+	$select = '<select name="datos">'.$options.'</select>';
+	echo $select;
+	?>
+	<div>
+		<label for="cantidad">Cantidad:</label>
+		<input type="number" id="cantidad" name="cantidad">
+	</div>
+	<button type="submit" id="buton" class="btn btn-primary btn-block" name="submit">Enviar</button>
+</form>
 </body>
 </html>
