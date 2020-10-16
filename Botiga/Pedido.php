@@ -15,5 +15,46 @@
             fclose($productos);
         }
     ?>
+    <div id="Contenedor">
+        <a href="Pediddo.php" id="enlace">Añadir</a>
+    </div>
+
+    <h1>Mostrar Productos</h1>
+    <?php
+        $productosGet = fopen("Carrito.txt", "r");
+        $listaProductos = [];
+        while(!feof($productosGet)) {
+            $Conjunto = fgets($productosGet);
+            $producto = explode(';', $Conjunto);
+            array_push($listaProductos, $producto);
+        }
+        fclose($productosGet);
+    ?>
+    <table id="tabla">
+            <th>Cuantitat</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+
+            <?php
+            foreach ($listaProductos as $key => $producto) {
+                echo "<tr>";
+                echo "<td>";
+                echo $producto[0];
+                echo "</td>";
+                echo "<td>";
+                echo $producto[1];
+                echo "</td>";
+                echo "<td>";
+                echo $producto[2];
+                echo "</td>";
+                echo "<td>";
+                echo number_format((float)$producto[3], 2, ",", " ")." €";
+                echo "</td>";
+                echo "</tr>";
+            }
+            ?>
+    </table>
+
 </body>
 </html>

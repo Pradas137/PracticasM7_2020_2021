@@ -1,2 +1,4 @@
 
-2;Patatas;Fritas;1
+3;Patatas;Fritas;1
+3;Patatas;Fritas;1
+3;Patatas;Fritas;1
