@@ -1,15 +1,17 @@
 <html>
-	<head>
-		<title>Carrito</title>
-		<link rel="stylesheet" href="CSS/Botiga.css">
-	</head>
-	<body>
-		<form action="Pedido.php" method="post">
-            <label for="cantidad">Cantidad:</label>
-			<input type="number" name="cantidad" size="30"><br/>
-			<p>
-            <label for="producto">Seleccionar Producto:</label>
-			<select for="producto" name='producto'>
+<head>
+	<title>Carito</title>
+	<link rel="stylesheet" href="CSS/Botiga.css">
+</head>
+
+<body>
+
+    <form method='POST' action='21-script.php'>
+        Cuantitat:
+        <input type='number' name='number'/>
+        <br><br>
+        Selecionar Producto:
+        <select name='city'>
             <?php
                 define("fileName", "productes.txt");
                 global $productos;
@@ -23,7 +25,12 @@
                 echo $options;
             ?>
         </select>
-			<input type="submit" value="Enviar!">
-		</form>
-	</body>
+
+        <br><br>
+        <div id="Contenedor">
+        <a href="Pedido.php" id="enlace">Añadir</a>
+    </div>
+    </form>
+
+</body> 
 </html>

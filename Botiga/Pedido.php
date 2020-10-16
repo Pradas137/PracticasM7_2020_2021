@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Pedido</title>
+	<link rel="stylesheet" href="CSS/Botiga.css">
 </head>
 <body>
-	<?php
-	$datos="";
-if (!empty($_REQUEST['datos'])){
-$datos=$_REQUEST['datos'];
-}
- 
-$cantidad="";
-if (!empty($_REQUEST['cantidad'])){
-$cantidad=$_REQUEST['cantidad'];
-}
-//Luego sobrescribo el txt
- 
-$archivo="Carrito.txt";
- 
-     $file=fopen($archivo,"a");
-     fwrite($file,$datos,$cantidad);
-
-	?>
+	<h1>Mostrar Pedido</h1>
+    <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $productos = fopen("Carrito.txt", "a");
+            $nuevoProducto = $_POST['cantidad'].";".$_POST['producto'];
+            fwrite($productos, "\n");
+            fwrite($productos, $nuevoProducto);
+            fclose($productos);
+        }
+    ?>
 </body>
 </html>
