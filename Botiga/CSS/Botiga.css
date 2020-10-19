@@ -3,6 +3,10 @@
   margin-right: auto;
 }
 
+#tabla .color{
+	background-color: red;
+}
+
 td {
 	  border: black 2px solid;
 }
