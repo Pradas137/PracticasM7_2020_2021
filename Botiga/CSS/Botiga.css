@@ -11,6 +11,9 @@ h1 {
     text-align:center;
 }
 
+table.class_color tr:last-child td{
+   background: #f00;
+}
 #Contenedor{
   text-align: center;
 }

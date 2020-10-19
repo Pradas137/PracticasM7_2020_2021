@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="CSS/Botiga.css">
 </head>
 <body>
-    <h1>Mostrar Productos</h1>
+    <h1>Mostrar Nuevo Producto</h1>
     <?php
         $productosGet = fopen("productes.txt", "r");
         $listaProductos = [];
@@ -18,7 +18,7 @@
         }
         fclose($productosGet);
     ?>
-    <table id="tabla">
+    <table id="tabla" class="class_color">
             <th>Nombre</th>
             <th>Descripcion</th>
             <th>Precio</th>
@@ -40,7 +40,7 @@
     </table>
     <div id="Contenedor">
         <a href="Carrito.php" id="enlace">Carrito</a>
-        <a href="Carrito.php" id="enlace">Atras</a>
+        <a href="nou_producte.html" id="enlace">Atras</a>
     </div>
 </body>
 </html>

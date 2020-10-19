@@ -3,7 +3,8 @@ Television;4K;1000
 Movil;Nokia;200
 PS5;Sony;500
 XboxOne;Microsoft;600
-movil;sony;24
-bocata;saaa;4
-Television ;LG;300
-bocata;Lomo;2
+Television ;Sony;234
+Television ;Sony;234
+Television ;eeee;34
+Television ;sony;34
+bocata;queso;4

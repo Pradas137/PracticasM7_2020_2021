@@ -1,60 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Pedido</title>
-	<link rel="stylesheet" href="CSS/Botiga.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="CSS/Botiga.css">
 </head>
 <body>
-	<h1>Mostrar Pedido</h1>
     <?php
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $productos = fopen("Carrito.txt", "a");
-            $nuevoProducto = $_POST['cantidad'].";".$_POST['producto'];
-            fwrite($productos, "\n");
-            fwrite($productos, $nuevoProducto);
-            fclose($productos);
+    session_start();
+    if (!isset($_SESSION["Carrito"])) {
+        $_SESSION["Carrito"] = [];
+    }
+    $file_lines = file("productes.txt");
+    $catalogue = [];
+    foreach ($file_lines as $key => $file_line) {
+        $product = explode(';', $file_line);
+        array_push($product, $key);
+        array_push($catalogue, $product);
+    }
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        if (isset($_GET['producto'], $_GET['cantidad'])) {
+            $product = $catalogue[$_GET['producto']];
+            array_push($product, $_GET['cantidad']);
+            array_push($_SESSION["Carrito"], $product );
         }
-    ?>
-    <div id="Contenedor">
-        <a href="Pediddo.php" id="enlace">Añadir</a>
-    </div>
-
-    <h1>Mostrar Productos</h1>
-    <?php
-        $productosGet = fopen("Carrito.txt", "r");
-        $listaProductos = [];
-        while(!feof($productosGet)) {
-            $Conjunto = fgets($productosGet);
-            $producto = explode(';', $Conjunto);
-            array_push($listaProductos, $producto);
+        if (isset($_GET['line'])) {
+            unset($_SESSION["Carrito"][$_GET['line']]);
         }
-        fclose($productosGet);
+    }
     ?>
-    <table id="tabla">
-            <th>Cuantitat</th>
-            <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Precio</th>
+    <div>
+        <table id="tabla">
+            <h1>Mostrar Nuevo Producto</h1>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Eliminar</th>
+                <?php
+                    foreach ($_SESSION["Carrito"] as $key => $product) {
+                        echo "<tr>";
+                        echo "<td>$product[0]</td>";
+                        echo "<td>", number_format((float)$product[2], 2, ",", " ") . " €", "</td>";
+                        echo "<td>$product[4]</td>";
+                        echo "<td><a class=\"btn btn-danger\" href=Pedido.php?line=$key><span class=\"fas fa-trash\"></span> Delete</a></td>";
+                        echo "</tr>";
+                    }
+                ?>
+                <tr>
+                    <form action="Pedido.php" method="get">
+                        <td colspan="2">            
+                            <select class="form-control" id="selectProduct" name="producto">
+                                <?php
+                                foreach ($catalogue as $key => $product) {
+                                    echo "<option value=$key>$product[0] | $product[2]€/Unidad</option>";
+                                }
+                                ?>
+                            </select>                        
+                        </td>
+                        <td>            
+                            <input type="number" class="form-control" id="cantidad" placeholder="1" name="cantidad" step="1" required>                   
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary"><span class="fas fa-plus"></span> Add</button> 
+                        </td> 
+                    </form>
+                </tr>
+            </tbody> 
+        </table> 
+    </div> 
 
-            <?php
-            foreach ($listaProductos as $key => $producto) {
-                echo "<tr>";
-                echo "<td>";
-                echo $producto[0];
-                echo "</td>";
-                echo "<td>";
-                echo $producto[1];
-                echo "</td>";
-                echo "<td>";
-                echo $producto[2];
-                echo "</td>";
-                echo "<td>";
-                echo number_format((float)$producto[3], 2, ",", " ")." €";
-                echo "</td>";
-                echo "</tr>";
-            }
-            ?>
-    </table>
-
+    
 </body>
 </html>
