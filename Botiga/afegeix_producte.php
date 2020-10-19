@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +18,7 @@
         }
     ?>
     <div id="Contenedor">
-        <a href="productes.txt" id="enlace">Añadir</a>
+        <a href="Mostrar_nuevo_producto.php" id="enlace">Añadir</a>
         <a href="elimina_productes.php?Nombre={$producto->Nombre}" class="eliminar" data-id="'.$obj_kart->del_prod($producto->Nombre).'"><img style=" width: 50px;" id="img" src="img/papelera.jpg" alt="Papelera"> </a>
     </div>
 </body>

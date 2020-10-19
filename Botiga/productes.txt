@@ -5,3 +5,5 @@ PS5;Sony;500
 XboxOne;Microsoft;600
 movil;sony;24
 bocata;saaa;4
+Television ;LG;300
+bocata;Lomo;2

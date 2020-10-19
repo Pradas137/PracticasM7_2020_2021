@@ -39,7 +39,8 @@
             ?>
     </table>
     <div id="Contenedor">
-        <a href="nou_producte.html" id="enlace">Añadir</a>
+        <a href="Carrito.php" id="enlace">Carrito</a>
+        <a href="Carrito.php" id="enlace">Atras</a>
     </div>
 </body>
 </html>
