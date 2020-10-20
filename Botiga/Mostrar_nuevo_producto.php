@@ -8,6 +8,23 @@
 </head>
 <body>
     <h1>Mostrar Nuevo Producto</h1>
+
+    <?php 
+    $editFormAction = $_SERVER['PHP_SELF'];
+    if (isset($_SERVER['QUERY_STRING'])) {
+        $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
+    }
+    $message = "Añadido producto correctamente.";
+    ?>
+
+    <div id="mensajeCorrecto">
+        <p> <?php 
+     if (!empty($message)) {
+     echo "<div class=\"successmessage\">" . $message . "</div>";
+     } 
+     ?></p>
+    </div>
+    
     <?php
         $productosGet = fopen("productes.txt", "r");
         $listaProductos = [];

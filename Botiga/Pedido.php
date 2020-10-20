@@ -7,69 +7,64 @@
     <link rel="stylesheet" href="CSS/Botiga.css">
 </head>
 <body>
-
     <?php
     session_start();
     if (!isset($_SESSION["Carrito"])) {
         $_SESSION["Carrito"] = [];
     }
-    $fichero= file("productes.txt");
-    $catalogo = [];
+    $fichero = file("productes.txt");
+    $catalogue = [];
     foreach ($fichero as $key => $fichero) {
-        $producto= explode(';', $fichero);
-        array_push($producto, $key);
-        array_push($catalogo, $producto);
+        $product = explode(';', $fichero);
+        array_push($product, $key);
+        array_push($catalogue, $product);
     }
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        if (isset($_GET['producto'], $_GET['cantidad'])) {
-            $producto = $catalogo[$_GET['producto']];
-            array_push($producto, $_GET['cantidad']);
-            array_push($_SESSION["Carrito"], $producto );
+        if (isset($_GET['productId'], $_GET['productQty'])) {
+            $product = $catalogue[$_GET['productId']];
+            array_push($product, $_GET['productQty']);
+            array_push($_SESSION["Carrito"], $product );
         }
         if (isset($_GET['line'])) {
             unset($_SESSION["Carrito"][$_GET['line']]);
         }
     }
     ?>
-
-
     <div>
-        <table id="tabla" clas="color">
-            <h1>Mostrar Nuevo Producto</h1>
+        <table>
                 <th>Producto</th>
                 <th>Precio</th>
                 <th>Cantidad</th>
-                <th>Eliminar</th>
+                <th>Actions</th>
                 <?php
-                    foreach ($_SESSION["Carrito"] as $key => $producto) {
+                    foreach ($_SESSION["Carrito"] as $key => $product) {
                         echo "<tr>";
-                        echo "<td>$producto[0]</td>";
-                        echo "<td>", number_format((float)$producto[2], 2, ",", " ") . " €", "</td>";
-                        echo "<td>$producto[4]</td>";
+                        echo "<td>$product[0]</td>";
+                        echo "<td>", number_format((float)$product[2], 2, ",", " ") . " €", "</td>";
+                        echo "<td>$product[4]</td>";
                         echo "<td><a class=\"btn btn-danger\" href=Pedido.php?line=$key><span class=\"fas fa-trash\"></span> Delete</a></td>";
                         echo "</tr>";
                     }
                 ?>
                 <tr>
-                    <form action="Pedido.php" method="get">
+                    <form action="Carrito.php" method="get">
                         <td colspan="2">            
-                            <select class="form-control" id="selectProduct" name="producto">
+                            <select class="form-control" id="selectProduct" name="productId">
                                 <?php
-                                foreach ($catalogo as $key => $producto) {
-                                    echo "<option value=$key>$producto[0] | $producto[2]€</option>";
+                                foreach ($catalogue as $key => $product) {
+                                    echo "<option value=$key>$product[0] | $product[2]€</option>";
                                 }
                                 ?>
                             </select>                        
                         </td>
                         <td>            
-                            <input type="number" class="form-control" id="cantidad" placeholder="1" name="cantidad" step="1" required>                   
+                            <input type="number" class="form-control" id="productQty" placeholder="1" name="productQty" step="1" required>                   
                         </td>
                         <td>
-                            <a href="Pedido.php" id="enlace">Añadir</a>
+                            <button type="submit" class="btn btn-primary"><span class="fas fa-plus"></span> Add</button> 
                         </td> 
                     </form>
                 </tr>
-            </tbody> 
         </table> 
     </div> 
 

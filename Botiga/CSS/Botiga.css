@@ -86,6 +86,17 @@ form input[type="submit"]:hover{
 	cursor:pointer;
 }
 
+#button {
+  width:100%;
+	padding:8px 16px;
+	margin-top:32px;
+	border:1px solid #000;
+	border-radius:5px;
+	display:block;
+	color:yellow;
+	background-color:black;
+}
+
 textarea{
 	width:100%;
 	height:100px;
@@ -97,3 +108,11 @@ textarea{
 	display:block;
 }
 
+#mensajeCorrecto{
+	width: 50%; 
+	text-align:center;
+	background-color:black;			
+	color:yellow;
+	margin-left: auto;
+ 	margin-right: auto;
+}

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="CSS/Botiga.css">
 </head>
 <body>
-    <h1>Mostrar Productos</h1>
+    <h1>Mostrar Catalogo</h1>
     <?php
         $productosGet = fopen("productes.txt", "r");
         $listaProductos = [];
@@ -39,7 +39,7 @@
             ?>
     </table>
     <div id="Contenedor">
-        <a href="nou_producte.html" id="enlace">Añadir</a>
+        <a href="nou_producte.php" id="enlace">Añadir</a>
     </div>
 </body>
 </html>

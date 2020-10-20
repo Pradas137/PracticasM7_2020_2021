@@ -24,6 +24,7 @@
             </div>
             <div>
             <input type="submit">
+            <input id="button" type="button" onclick="history.back()" name="Atras" value="Atras">
             </div>
         </form>
     </div>
